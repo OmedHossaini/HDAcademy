@@ -1,6 +1,11 @@
-import { Outlet } from 'react-router-dom'
+// Importing the Outlet component from the 'react-router-dom' library
+import { Outlet } from 'react-router-dom';
 
+// Defining the Layout component
 const Layout = () => {
-    return <Outlet />
+    // Rendering the nested routes using Outlet
+    return <Outlet />;
 }
-export default Layout
+
+// Exporting the Layout component as the default export
+export default Layout;

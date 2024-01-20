@@ -7,6 +7,7 @@ import { store } from './app/Store'
 import { Provider } from 'react-redux'
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
+// Disable React DevTools in production
 if (process.env.NODE_ENV === 'production') disableReactDevTools()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

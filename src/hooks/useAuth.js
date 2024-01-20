@@ -1,26 +1,37 @@
-import { useSelector } from 'react-redux'
-import { selectCurrentToken } from "../features/auth/authSlice"
-import { jwtDecode} from 'jwt-decode'
+import { useSelector } from 'react-redux';
+import { selectCurrentToken } from "../features/auth/authSlice";
+import { jwtDecode } from 'jwt-decode';
 
+// Custom hook for handling authentication details
 const useAuth = () => {
-    const token = useSelector(selectCurrentToken)
-    let isManager = false
-    let isAdmin = false
-    let status = "Employee"
+    // Get the current authentication token from the Redux store
+    const token = useSelector(selectCurrentToken);
 
+    // Initialize variables related to user roles and status
+    let isManager = false;
+    let isAdmin = false;
+    let status = "Employee";
+
+    // Check if a valid token exists
     if (token) {
-        const decoded = jwtDecode(token)
-        const { username, roles } = decoded.UserInfo
+        // Decode the JWT token to extract user information
+        const decoded = jwtDecode(token);
+        const { username, roles } = decoded.UserInfo;
 
-        isManager = roles.includes('Manager')
-        isAdmin = roles.includes('Admin')
+        // Check if the user has Manager or Admin roles
+        isManager = roles.includes('Manager');
+        isAdmin = roles.includes('Admin');
 
-        if (isManager) status = "Manager"
-        if (isAdmin) status = "Admin"
+        // Update user status based on roles
+        if (isManager) status = "Manager";
+        if (isAdmin) status = "Admin";
 
-        return { username, roles, status, isManager, isAdmin }
+        // Return an object with user details
+        return { username, roles, status, isManager, isAdmin };
     }
 
-    return { username: '', roles: [], isManager, isAdmin, status }
-}
-export default useAuth
+    // Return default values when there's no valid token
+    return { username: '', roles: [], isManager, isAdmin, status };
+};
+
+export default useAuth;
