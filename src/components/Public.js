@@ -11,7 +11,7 @@ const Public = () => {
                 <address className="public__addr">
                 <p>Join the team at HD Academy and be part of something extraordinary!</p>
                 <p>As an employee, you'll play a crucial role in the development of young athletes and contribute to the success of HD Academy.</p>
-
+                <p>See for yourself using User: test, and Password: 123</p>
                 </address>
                 <br />
             </main>
